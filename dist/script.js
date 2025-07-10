@@ -1,36 +1,87 @@
-const taskName = document.querySelector("#taskInput");
-const post = document.querySelector("#postBtn");
-const list = document.querySelector("#taskList");
+// NavBar Functionality
+{
+  // 🔹 Navbar Toggle Logic
+  const navLinks = document.querySelector("#nav-links");
+  const nav_Bars = document.querySelector("#nav-bars");
+  const body = document.querySelector("body");
 
-post.addEventListener("click", () => {
-  const task = taskName.value.trim();
-  if (task === "") return alert("Empty Task Can't Be Added");
+  function ToggleBars(e) {
+    navLinks.classList.toggle("hidden");
+    e.stopPropagation();
+  }
 
-  // Create new list item
-  const newLi = document.createElement("li");
-  newLi.className =
-    "flex justify-between items-center bg-white p-3 rounded shadow text-black font-medium";
+  function sideClick(e) {
+    if (
+      !navLinks.classList.contains("hidden") &&
+      !navLinks.contains(e.target) &&
+      !nav_Bars.contains(e.target)
+    ) {
+      navLinks.classList.add("hidden");
+    }
+  }
 
-  const taskText = document.createElement("span");
-  taskText.textContent = task;
+  document.body.addEventListener("click", sideClick);
+  nav_Bars.addEventListener("click", ToggleBars);
+}
+// Selection Dropdown Functionality
 
-  // Create cancel button
-  const cancel = document.createElement("button");
-  cancel.className = "ml-4 p-2 rounded hover:text-red-700";
-  cancel.style.background = "transparent";
-  cancel.style.border = "none";
+{
+  const menu = document.getElementById("projectDropdown");
+  function toggleDropdown() {
+    menu.classList.toggle("hidden");
+  }
+  menu.addEventListener("click", toggleDropdown);
+}
 
-  const icon = document.createElement("i");
-  icon.className = "fa-regular fa-circle-xmark text-red-600 text-2xl";
-  cancel.appendChild(icon);
+// ToDo List Functionality
+{
+  document.addEventListener("DOMContentLoaded", () => {
+    const taskName = document.querySelector("#taskInput");
+    const post = document.querySelector("#postBtn");
+    const list = document.querySelector("#taskList");
 
-  cancel.addEventListener("click", () => {
-    newLi.remove();
+    post.addEventListener("click", (e) => {
+      e.preventDefault(); // Prevent form submission if inside form
+
+      const task = taskName.value.trim();
+      if (task === "") return alert("Empty Task Can't Be Added");
+
+      const newLi = document.createElement("li");
+      newLi.className =
+        "flex justify-between items-center bg-white px-4 py-3 rounded shadow text-black font-medium";
+
+      const taskText = document.createElement("span");
+      taskText.className = "flex-1";
+      taskText.textContent = task;
+
+      const cancel = document.createElement("button");
+      cancel.className = "ml-4 hover:text-red-700";
+      cancel.style.background = "transparent";
+      cancel.style.border = "none";
+
+      const icon = document.createElement("i");
+      icon.className = "fa-regular fa-circle-xmark text-red-600 text-2xl";
+      cancel.appendChild(icon);
+
+      cancel.addEventListener("click", () => {
+        newLi.remove();
+      });
+
+      newLi.appendChild(taskText);
+      newLi.appendChild(cancel);
+      list.appendChild(newLi);
+
+      taskName.value = "";
+    });
   });
+}
 
-  newLi.appendChild(taskText);
-  newLi.appendChild(cancel);
-  list.appendChild(newLi);
+//DarkMode Functionality
 
-  taskName.value = "";
-});
+{
+  const body = document.querySelector("body");
+
+  if (body.style.backgroundColor == "bg-grey-100") {
+    console.error("hii");
+  }
+}

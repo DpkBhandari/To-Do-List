@@ -16,47 +16,97 @@
       referrerpolicy="no-referrer"
     />
   </head>
-  <body
-    class="h-screen w-screen flex items-center justify-center scroll-smooth bg-gray-100"
-  >
-    <section
-      class="h-full w-[90%] md:h-[75%] md:w-[75%] shadow-2xl bg-white flex flex-col items-center justify-start p-4"
+  <body class="h-screen w-screen scroll-smooth bg-gray-100">
+    <!-- Navbars Start From Here -->
+    <nav
+      class="h-16 w-screen bg-black text-white flex items-center font-semibold justify-between"
     >
-      <h1 class="text-4xl font-bold text-center m-6 underline">
-        TO DO LIST 🔥
-      </h1>
-
+      <section class="font-extrabold text-3xl px-4 cursor-pointer">
+        Mini-Projects
+      </section>
       <section
-        class="flex h-[15%] w-full m-8 p-2 gap-2 items-center justify-evenly md:justify-around"
+        class="text-white text-2xl px-8 cursor-pointer md:hidden"
+        id="nav-bars"
       >
-        <input
-          type="text"
-          id="taskInput"
-          class="bg-gray-200 h-12 w-48 md:w-[75%] font-normal text-black rounded-lg outline-none p-4 placeholder:text-gray-600"
-          placeholder="Enter Your Task Here..."
-          maxlength="50"
-        />
-        <button
-          id="postBtn"
-          type="button"
-          class="sm:h-12 sm:w-28 md:w-64 rounded-md text-white font-semibold sm:text-sm md:text-md lg:text-lg md:text-xl p-4 flex items-center justify-center text-center transition delay-150 bg-black hover:bg-white hover:text-black hover:border hover:border-black hover:scale-105"
+        <i class="fa-solid fa-bars-staggered"></i>
+      </section>
+
+      <ul
+        id="nav-links"
+        class="hidden flex flex-col items-center gap-4 p-4 absolute top-16 m-4 right-0 w-36 h-48 bg-gray-700 rounded-md transition-all duration-300 ease-in-out md:flex md:flex-row md:items-center md:static md:bg-transparent md:space-y-0 md:space-x-2 md:h-auto md:w-auto md:px-8 lg:text-xl"
+      >
+        <li><a href="#">Home</a></li>
+        <li class="relative mb-4 group">
+          <button
+            class="flex items-center justify-between font-semibold w-full p-2 border rounded bg-white text-black"
+          >
+            View Projects
+            <i class="fa-solid fa-angle-down ml-2"></i>
+          </button>
+          <ul
+            id="projectDropdown"
+            class="absolute right-0 mt-1 w-40 bg-black border rounded shadow hidden group-hover:block z-10"
+          >
+            <li class="p-2 hover:bg-gray-100 hover:text-black cursor-pointer">
+              To Do List
+            </li>
+            <li class="p-2 hover:bg-gray-100 hover:text-black cursor-pointer">
+              Helo 2
+            </li>
+            <li class="p-2 hover:bg-gray-100 hover:text-black cursor-pointer">
+              Helo 3
+            </li>
+            <li class="p-2 hover:bg-gray-100 hover:text-black cursor-pointer">
+              Helo 4
+            </li>
+          </ul>
+        </li>
+        <li><a href="#">Dark Mode</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+    <!-- Main section Starts From Here -->
+    <main class="h-screen w-screen flex items-center justify-center mt-16">
+      <section
+        class="h-full w-[90%] md:h-[75%] md:w-[75%] shadow-2xl bg-white flex flex-col items-center justify-start p-4"
+      >
+        <h1 class="text-4xl font-bold text-center m-6 underline">
+          TO DO LIST 🔥
+        </h1>
+
+        <section
+          class="flex h-[15%] w-full m-8 p-2 gap-2 items-center justify-evenly md:justify-around"
         >
-          Add Task
-        </button>
-      </section>
+          <input
+            type="text"
+            id="taskInput"
+            class="bg-gray-200 h-12 w-48 md:w-[75%] font-normal text-black rounded-lg outline-none p-4 placeholder:text-gray-600"
+            placeholder="Enter Your Task Here..."
+            maxlength="50"
+          />
+          <button
+            id="postBtn"
+            type="button"
+            class="sm:h-12 sm:w-28 md:w-64 rounded-md text-white font-semibold sm:text-sm md:text-md lg:text-lg md:text-xl p-4 flex items-center justify-center text-center transition delay-150 bg-black hover:bg-white hover:text-black hover:border hover:border-black hover:scale-105"
+          >
+            Add Task
+          </button>
+        </section>
 
-      <section
-        class="bg-yellow-100 h-full w-[95%] overflow-y-auto m-8 flex justify-center items-start p-8"
-      >
-        <ul id="taskList" class="text-xl w-full space-y-2">
-          <li>
-            <span class="text-green-900 text-2xl font-extrabold"
-              >Task To Be Done .....</span
-            >
-          </li>
-        </ul>
+        <section
+          class="bg-yellow-100 h-full w-[95%] overflow-y-auto m-8 flex justify-center items-start p-8"
+        >
+          <ul id="taskList" class="text-xl w-full space-y-2">
+            <li>
+              <span class="text-green-900 text-2xl font-extrabold"
+                >Task To Be Done .....</span
+              >
+            </li>
+          </ul>
+        </section>
       </section>
-    </section>
+    </main>
 
     <script src="script.js"></script>
   </body>
